@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,10 +20,87 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  font-family: 'poppins', 'sans-serif';
+  transition: all 0.3s ease-in;
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
+
+/* Remove blue background on touch */
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* Removed blue background on touch */
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.loader,
+.loader:before,
+.loader:after {
+  width: 35px;
+  aspect-ratio: 1;
+  box-shadow: 0 0 0 3px inset;
+  position: relative;
+  animation: 1.5s infinite 0.5s;
+  animation-name: l7-1, l7-2;
+}
+
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  left: calc(100% + 5px);
+  animation-delay: 1s, 0s;
+}
+
+.loader:after {
+  left: -40px;
+  animation-delay: 0s, 1s;
+}
+
+@keyframes l7-1 {
+
+  0%,
+  55%,
+  100% {
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0
+  }
+
+  20%,
+  30% {
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 50%
+  }
+}
+
+@keyframes l7-2 {
+
+  0%,
+  55%,
+  100% {
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0
+  }
+
+  20%,
+  30% {
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 50%
+  }
+}
+
