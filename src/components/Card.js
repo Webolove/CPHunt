@@ -37,8 +37,12 @@ export default function Card({ item, theme, liked, bookmarkedList }) {
         setUpdating(true);
         const contestData = {
             name: contestName,
-            time: contestTime
-        }
+            time: contestTime,
+            date: item.date, // added date, remainder time and notified necessary for sending remainders.
+            reminderTime: 30, //How much time before you want to send reminders (in minutes)
+            notified: false //once notified, it sets it to true, so that only one notification is sent.
+          };
+          
 
         const userRef = doc(firestore, "users", user.uid);
         if (bookmark == true) {
